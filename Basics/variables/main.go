@@ -52,4 +52,36 @@ func main() {
 	// declaring multiple variables
 	e, f, g, h := "test", 99, 33.32, false
 	fmt.Println(e, f, g, h)
+
+	// wrong way of declaring variables
+	// 23var := "variable name should not start with number"
+	// 24 test2 := "variable name shoud not have space"
+	multiWord := "variable multiple words should be in camel case"
+	fmt.Print(multiWord)
+
+	car := "car"
+	Car := "Car"
+	CAR := "CAR"
+	fmt.Println(car, Car, CAR)
+
+	// zero value variables
+	var zeroVar1 string
+	fmt.Println(zeroVar1)
+
+	var zeroVar2 int
+	fmt.Println(zeroVar2) // 0
+
+	var zeroVar3 float32
+	fmt.Println(zeroVar3) // 0
+
+	var zeroVar4 bool
+	fmt.Println(zeroVar4) // false
+
+	var (
+		multiVar1 = "multiVar1"
+		multiVar2 = 22222
+		multiVar3 = 23.432
+		multiVar4 = true
+	)
+	fmt.Printf("multiVar1: %v\nmultiVar2: %v\nmultiVar3:%v\nmultiVar4:%v", multiVar1, multiVar2, multiVar3, multiVar4)
 }
