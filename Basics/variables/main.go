@@ -48,4 +48,8 @@ func main() {
 	var ddd bool
 	ddd = true
 	fmt.Println(ddd)
+
+	// declaring multiple variables
+	e, f, g, h := "test", 99, 33.32, false
+	fmt.Println(e, f, g, h)
 }
