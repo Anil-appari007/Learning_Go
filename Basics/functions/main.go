@@ -33,6 +33,11 @@ func noReturn() (r_var string) {
 	return
 }
 
+// Anonymous function
+var area = func(l int, b int) int {
+	return l * b
+}
+
 func main() {
 	sayHello()
 	sayHelloUser("dev")
@@ -43,4 +48,6 @@ func main() {
 	fmt.Println(checkNumberMatch(3, 3))
 
 	fmt.Println((noReturn()))
+
+	fmt.Println(area(4, 5))
 }
