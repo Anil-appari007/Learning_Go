@@ -32,4 +32,5 @@ func main() {
 	for key, value := range makeMap1 {
 		fmt.Println(key, "=", value)
 	}
+	//
 }
