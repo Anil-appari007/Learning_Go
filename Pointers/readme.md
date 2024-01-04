@@ -1,0 +1,1 @@
+https://www.digitalocean.com/community/conceptual-articles/understanding-pointers-in-go

@@ -1,4 +1,4 @@
 # Learning_Go
 
-completed:
-    - Variables
+Guides:
+- Json : https://www.sohamkamani.com/golang/json/
