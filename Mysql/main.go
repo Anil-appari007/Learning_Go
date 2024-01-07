@@ -12,6 +12,11 @@ func main() {
 	dbUser := os.Getenv("DBUSER")
 	dbPasswd := os.Getenv("DBPASSWORD")
 	dbName := os.Getenv("DBNAME")
+	if dbUser == "" || dbPasswd == "" || dbName == "" {
+		log.Fatal("Check the Database Creds")
+	} else {
+		log.Println("Database Credentials Found & not empty")
+	}
 	config := mysql.Config{
 		User:   dbUser,
 		Passwd: dbPasswd,
