@@ -2,32 +2,52 @@ package main
 
 import (
 	"database/sql"
-	"fmt"
+	"log"
 	"os"
 
 	"github.com/go-sql-driver/mysql"
 )
 
 func main() {
+	dbUser := os.Getenv("DBUSER")
+	dbPasswd := os.Getenv("DBPASSWORD")
+	dbName := os.Getenv("DBNAME")
 	config := mysql.Config{
-		User:   "root",
-		Passwd: "password",
+		User:   dbUser,
+		Passwd: dbPasswd,
 		Net:    "tcp",
 		Addr:   "127.0.0.1:3306",
-		DBName: "testdb",
+		DBName: dbName,
 	}
 	db, err := sql.Open("mysql", config.FormatDSN())
 	if err != nil {
-		fmt.Println(err.Error())
-		os.Exit(2)
+		log.Fatal(err.Error())
 	}
+	defer db.Close()
 
 	err = db.Ping()
 	if err != nil {
-		fmt.Println(err.Error())
-		os.Exit(2)
+		log.Fatal(err.Error())
 	}
-	fmt.Println("Db connection is success")
-	defer db.Close()
+	log.Println("Db Connection is success")
+
+	getData, err := db.Query("SELECT * FROM cities;")
+	if err != nil {
+		log.Fatal(err.Error())
+	}
+	log.Println("Retreiving Data from table")
+	for getData.Next() {
+		var id int
+		var city string
+		var population int
+		err = getData.Scan(&id, &city, &population)
+		if err != nil {
+			log.Fatal(err.Error())
+		}
+
+		log.Printf("%v. City: %s\t-Population: %v", id, city, population)
+	}
+
+	defer getData.Close()
 
 }
